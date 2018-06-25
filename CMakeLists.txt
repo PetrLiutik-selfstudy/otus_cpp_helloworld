@@ -10,8 +10,6 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
   COMPILE_OPTIONS -Wpedantic -Wall -Wextra
 )
 
-target_link_libraries(${PROJECT_NAME} helloworld)
-
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)
 
 set(CPACK_GENERATOR DEB)
