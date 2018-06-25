@@ -1,12 +1,13 @@
 cmake_minimum_required(VERSION 3.2)
 
-project(helloworld VERSION 1.1.$ENV{TRAVIS_BUILD_NUMBER})
+project(helloworld VERSION 1.1.10)#$ENV{TRAVIS_BUILD_NUMBER})
 
 configure_file(version.h.in version.h)
 
+# Setup application
 add_executable(${PROJECT_NAME} main.cpp)
 
-add_library(ver_lib "ver_lib.cpp")
+add_library(ver_lib ver_lib.cpp)
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
   CXX_STANDARD 14
@@ -17,6 +18,26 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 target_link_libraries(${PROJECT_NAME} ver_lib)
 
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)
+
+
+# Setup testing
+enable_testing()
+find_package(GTest REQUIRED)
+include_directories(${GTEST_INCLUDE_DIR})
+
+add_executable(test_${PROJECT_NAME} test_helloworld.cpp)
+
+set_target_properties(${PROJECT_NAME}  test_${PROJECT_NAME} PROPERTIES
+  CXX_STANDARD 14
+  CXX_STANDARD_REQUIRED ON
+  COMPILE_OPTIONS -Wpedantic -Wall -Wextra
+)
+
+set_target_properties(test_${PROJECT_NAME} PROPERTIES
+  INCLUDE_DIRECTORIES ${GTEST_INCLUDE_DIRS}
+)
+
+
 
 set(CPACK_GENERATOR DEB)
 
