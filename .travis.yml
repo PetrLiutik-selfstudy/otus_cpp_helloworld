@@ -1,17 +1,10 @@
 language: cpp
 before_script:
-  #- sudo apt-get install libgtest-dev
-  #- cd /usr/src/gtest
-  #- sudo cmake CMakeLists.txt
-  #- sudo make
-  
   - sudo apt-get install libgtest-dev
   - cd /usr/src/gtest
-  - sudo mkdir build
-  - cd build
-  - sudo cmake ..
+  - sudo sudo -V | grep PATH
+  - sudo cmake CMakeLists.txt
   - sudo make
-  - sudo cp libgtest* /usr/lib/
 script:
   - cmake .
   - cmake --build .
