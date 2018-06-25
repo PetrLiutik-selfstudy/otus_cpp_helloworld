@@ -26,6 +26,7 @@ find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIR})
 
 add_executable(test_${PROJECT_NAME} test_helloworld.cpp)
+target_link_libraries(test_${PROJECT_NAME} ${GTEST_BOTH_LIBRARIES} ver_lib)
 
 set_target_properties(${PROJECT_NAME}  test_${PROJECT_NAME} PROPERTIES
   CXX_STANDARD 14
@@ -48,3 +49,5 @@ set(CPACK_PACKAGE_VERSION_PATCH "${PROJECT_VERSION_PATCH}")
 set(CPACK_PACKAGE_CONTACT petr_lutik@mail.ru)
 
 include (CPack)
+
+add_test(sample_test test_${PROJECT_NAME})
