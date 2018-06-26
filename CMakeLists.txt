@@ -26,7 +26,7 @@ find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIR})
 
 add_executable(test_${PROJECT_NAME} test_helloworld.cpp)
-target_link_libraries(test_${PROJECT_NAME} ${GTEST_BOTH_LIBRARIES} ver_lib)
+target_link_libraries(test_${PROJECT_NAME} ${GTEST_BOTH_LIBRARIES} ver_lib pthread)
 
 set_target_properties(${PROJECT_NAME}  test_${PROJECT_NAME} PROPERTIES
   CXX_STANDARD 14
