@@ -1,10 +1,11 @@
 language: cpp
 install:
-  - sudo apt-get install libgtest-dev
+  - sudo apt-get install -y libgtest-dev
   - cd /usr/src/gtest
-  - sudo env PATH=$PATH cmake CMakeLists.txt
+  - sudo env "PATH=$PATH" cmake CMakeLists.txt
   - sudo make
   - sudo cp *.a /usr/lib
+  - cd "${TRAVIS_BUILD_DIR}"
 
 before_script:
   
