@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.2)
 
-project(helloworld VERSION 1.1.10)#$ENV{TRAVIS_BUILD_NUMBER})
+project(helloworld VERSION 1.1.$ENV{TRAVIS_BUILD_NUMBER})
 
 configure_file(version.h.in version.h)
 
@@ -50,4 +50,4 @@ set(CPACK_PACKAGE_CONTACT petr_lutik@mail.ru)
 
 include (CPack)
 
-add_test(sample_test test_${PROJECT_NAME})
+add_test(ver_test_case test_${PROJECT_NAME})
